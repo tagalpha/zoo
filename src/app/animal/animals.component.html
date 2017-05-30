@@ -1,0 +1,25 @@
+<h2>Ajout d'un animal</h2>
+
+<input [(ngModel)]="name" placeholder="name"/>
+<button (click)="add(name)">Ajouter</button>
+
+<div *ngIf="animals">
+  <h2>Liste des animaux</h2>
+  <ul class="animals">
+    <li *ngFor="let animal of animals" (click)="getOne(animal.id)" [class.selected]="animal === selectedAnimal">
+      {{animal.name}}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="animalEdited">
+  <h2>Edition de l'animal {{animalEdited.name|uppercase}}</h2>
+  <div><label>id: </label>{{animalEdited.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="animalEdited.name" placeholder="name"/><br>
+  </div>
+
+  <button (click)="update(animalEdited.id, animalEdited.name)">Edit</button>
+  <button (click)="delete(animalEdited.id)">Delete</button>
+</div>
