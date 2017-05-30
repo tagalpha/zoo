@@ -5,16 +5,26 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { NutrimentModule } from './nutriment/nutriment.module';
+
+import { AppRoutingModule } from './app-routing.module';
+import { Routes, RouterModule } from '@angular/router';
+import { EmptyComponent } from './empty/empty.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmptyComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NutrimentModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
