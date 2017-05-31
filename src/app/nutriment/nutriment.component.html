@@ -1,5 +1,8 @@
-<p>nutriment works!</p>
+<h2>Liste des aliments </h2>
 
-<ul *ngFor="let nutriment of nutriments">
-  <li>{{nutriment.name}}</li>
-</ul>
+<div class="col-sm-3 panel panel-default " *ngFor="let nutriment of nutriments">
+  <div class="panel-body text-center">{{nutriment.name}}</div>
+  <div class="panel-footer">Nulla volutpat lacinia rutrum. Quisque vitae leo dolor.
+     Cras ut ullamcorper felis, sit amet ornare nunc. Integer efficitur mattis sodales.
+  </div>
+</div>
