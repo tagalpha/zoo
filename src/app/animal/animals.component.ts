@@ -11,8 +11,8 @@ export class AnimalsComponent implements OnInit {
   animals: Animal[];
   animalEdited: Animal;
 
-  @Input() name: Animal;
-  @Input() id: Animal;
+  @Input() name: string;
+  @Input() id: string|number;
 
   constructor(private animalService: AnimalService) {}
 
@@ -26,14 +26,16 @@ export class AnimalsComponent implements OnInit {
 
   add(name: string) : void {
     this.animalService.addAnimals(name)
+    this.name = '';
   }
 
   update(id: number, name: string) : void {
     this.animalService.updateAnimals(id, name);
   }
 
-  delete(id: number) : void {
-    this.animalService.deleteAnimals(id);
+  delete() : void {
+    this.animalService.deleteAnimals(this.animalEdited);
+    delete this.animalEdited;
   }
 
   ngOnInit(): void {

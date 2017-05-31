@@ -16,8 +16,9 @@ export class AnimalService {
     }
 
     addAnimals(name: string) : void {
-        var numberAnimalsStored = Object.keys(sessionStorage).length;
-        var newAnimal = { 'id': (numberAnimalsStored + 1), 'name': name };
+        var id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+
+        var newAnimal = { 'id': id, 'name': name };
         sessionStorage.setItem(newAnimal.id.toString(), JSON.stringify(newAnimal));
         this.storedAnimals.push(newAnimal);
     }
@@ -28,8 +29,13 @@ export class AnimalService {
         sessionStorage.setItem(id.toString(), JSON.stringify(animalToUpdate));
     }
 
-    deleteAnimals(id: number) : void {
-        sessionStorage.removeItem(id.toString());
+    deleteAnimals(animal: Animal) : void {
+        sessionStorage.removeItem(animal.id.toString());
+        const index = this.storedAnimals.indexOf(animal);
+
+        if(-1 < index) {
+            this.storedAnimals.splice(index,  1);
+        }
     }
 
     setStoredAnimals(): void {
