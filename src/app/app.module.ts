@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AnimalsComponent } from './animal/animals.component';
+import { AnimalService } from './animal/animal.service';
 
 import { NutrimentModule } from './nutriment/nutriment.module';
 
@@ -14,17 +16,28 @@ import { EmptyComponent } from './empty/empty.component';
 @NgModule({
   declarations: [
     AppComponent,
-    EmptyComponent
+    EmptyComponent,
+    AnimalsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     NutrimentModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/animals',
+        pathMatch: 'full'
+      },
+      {
+        path: 'animals',
+        component: AnimalsComponent
+      }
+    ])
   ],
-  providers: [
-  ],
+  providers: [AnimalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
