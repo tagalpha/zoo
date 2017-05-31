@@ -31,6 +31,7 @@ export class AnimalsComponent implements OnInit {
 
   update(id: number, name: string) : void {
     this.animalService.updateAnimals(id, name);
+    delete this.animalEdited;
   }
 
   delete() : void {
