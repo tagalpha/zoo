@@ -1,0 +1,40 @@
+<h2><i class="fa fa-plus"></i> Ajout d'un animal</h2>
+
+<div class="col-sm-12" id="form-add-animal">
+  <div class="form-group">
+    <div class="col-sm-10">
+      <input [(ngModel)]="name" placeholder="name" class="form-control"/>
+    </div>
+    <div class="col-sm-2">
+      <button (click)="add(name)" class="btn btn-block btn-success">Ajouter</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="animals" class="col-sm-8 no-padding-left">
+  <h2><i class="fa fa-list"></i> Liste des animaux</h2>
+  <table class="table table-striped">
+    <thead>
+      <th class="col-sm-5">Nom</th>
+      <th class="col-sm-5">Nutriment</th>
+      <th class="col-sm-2">Action</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let animal of animals" [class.selected]="animal === selectedAnimal">
+      <td>{{animal.name}}</td>
+      <td></td>
+      <td><button type="button" (click)="getOne(animal.id)" class="btn btn-default btn-xs">Voir détails</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="animalEdited" class="col-sm-4 no-padding-right">
+  <h2><i class="fa fa-edit"></i> Modification de l'animal {{animalEdited.name|uppercase}}</h2>
+  <div>
+    <input [(ngModel)]="animalEdited.name" placeholder="name" class="form-control"/><br>
+  </div>
+
+  <button (click)="update(animalEdited.id, animalEdited.name)" class="btn btn-primary">Modifier</button>
+  <button (click)="delete()" class="btn btn-danger">Supprimer</button>
+</div>
