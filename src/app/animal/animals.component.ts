@@ -20,8 +20,8 @@ export class AnimalsComponent implements OnInit {
     this.animalService.getAnimals().then(animals => this.animals = animals);
   }
 
-  getOne(id: number): void {
-    this.animalService.getAnimal(id).then(animal => this.animalEdited = animal);
+  getOne(animal: Animal): void {
+    this.animalService.getAnimal(animal.id).then(animal => this.animalEdited = animal);
   }
 
   add(animal: Animal) : void {
@@ -35,9 +35,8 @@ export class AnimalsComponent implements OnInit {
     delete this.animalEdited;
   }
 
-  delete() : void {
-    this.animalService.deleteAnimals(this.animalEdited);
-    delete this.animalEdited;
+  delete(animal: Animal) : void {
+    this.animalService.deleteAnimals(animal);
   }
 
   showAddBlock(): void {
