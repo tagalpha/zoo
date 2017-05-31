@@ -10,9 +10,9 @@ import { AnimalService } from './animal.service';
 export class AnimalsComponent implements OnInit {
   animals: Animal[];
   animalEdited: Animal;
+  addBlock = false;
 
-  @Input() name: string;
-  @Input() id: string|number;
+  animal = new Animal;
 
   constructor(private animalService: AnimalService) {}
 
@@ -24,13 +24,14 @@ export class AnimalsComponent implements OnInit {
     this.animalService.getAnimal(id).then(animal => this.animalEdited = animal);
   }
 
-  add(name: string) : void {
-    this.animalService.addAnimals(name)
-    this.name = '';
+  add(animal: Animal) : void {
+    console.log(animal);
+    this.animalService.addAnimals(animal);
+    //this.name = '';
   }
 
-  update(id: number, name: string) : void {
-    this.animalService.updateAnimals(id, name);
+  update(animal: Animal) : void {
+    this.animalService.updateAnimals(animal);
     delete this.animalEdited;
   }
 
@@ -39,9 +40,18 @@ export class AnimalsComponent implements OnInit {
     delete this.animalEdited;
   }
 
+  showAddBlock(): void {
+    this.addBlock = true;
+  }
+  hideAddBlock(): void {
+    this.addBlock = false;
+  }
+
+  cancelEdit(): void {
+    delete this.animalEdited;
+  }
+
   ngOnInit(): void {
-    this.animalService.hydrateBdd();
-    this.animalService.setStoredAnimals();
     this.getAll();
   }
 }
