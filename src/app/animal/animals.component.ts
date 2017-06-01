@@ -28,6 +28,9 @@ export class AnimalsComponent implements OnInit {
   add(animal: Animal) : void {
     console.log(animal);
     this.animalService.addAnimals(animal);
+    this.addBlock = false;
+    delete this.animal;
+    this.animal = new Animal;
   }
 
   update(animal: Animal) : void {

@@ -3,40 +3,40 @@
   <h2 class="text-center">Ajout d'un animal</h2>
   <div class="form-group" id="form-add-animal">
       <div class="col-sm-3">
-        <label for="name">Nom de l'animal</label>
-        <input [(ngModel)]="animal.name" id="name" placeholder="name" class="form-control"/>
+        <label for="a-name">Nom de l'animal</label>
+        <input [(ngModel)]="animal.name" id="a-name" placeholder="name" class="form-control"/>
       </div>
       <div class="col-sm-3">
-        <label for="race">Race de l'animal</label>
-        <input [(ngModel)]="animal.race" id="race" placeholder="race" class="form-control"/><br>
+        <label for="a-race">Race de l'animal</label>
+        <input [(ngModel)]="animal.race" id="a-race" placeholder="race" class="form-control"/><br>
       </div>
       <div class="col-sm-3">
-        <label for="size">Taille de l'animal</label>
-        <input [(ngModel)]="animal.size" id="size" placeholder="size" class="form-control"/><br>
+        <label for="a-size">Taille de l'animal</label>
+        <input [(ngModel)]="animal.size" id="a-size" placeholder="size" class="form-control"/><br>
       </div>
       <div class="col-sm-3">
-        <label for="weight">Poids de l'animal</label>
-        <input [(ngModel)]="animal.weight" id="weight" placeholder="weight" class="form-control"/><br>
+        <label for="a-weight">Poids de l'animal</label>
+        <input [(ngModel)]="animal.weight" id="a-weight" placeholder="weight" class="form-control"/><br>
       </div>
       <div class="col-sm-3">
-        <label for="origin">Origine de l'animal</label>
-        <input [(ngModel)]="animal.origin" id="origin" placeholder="origin" class="form-control"/><br>
+        <label for="a-origin">Origine de l'animal</label>
+        <input [(ngModel)]="animal.origin" id="a-origin" placeholder="origin" class="form-control"/><br>
       </div>
       <div class="col-sm-3">
-        <label for="picture">Image de l'animal</label>
-        <input [(ngModel)]="animal.picture" id="picture" placeholder="picture" class="form-control"/><br>
+        <label for="a-picture">Image de l'animal</label>
+        <input [(ngModel)]="animal.picture" id="a-picture" placeholder="picture" class="form-control"/><br>
       </div>
       <div class="col-sm-3">
-        <label for="gender">Sexe de l'animal</label>
-        <input [(ngModel)]="animal.gender" id="gender" placeholder="gender" class="form-control"/><br>
+        <label for="a-gender">Sexe de l'animal</label>
+        <input [(ngModel)]="animal.gender" id="a-gender" placeholder="gender" class="form-control"/><br>
       </div>
       <div class="col-sm-3">
-        <label for="nutriment">Aliments préférés de l'animal</label>
-        <input [(ngModel)]="animal.nutriment" id="nutriment" placeholder="nutriment" class="form-control"/><br>
+        <label for="a-nutriment">Aliments préférés de l'animal</label>
+        <input [(ngModel)]="animal.nutriment" id="a-nutriment" placeholder="nutriment" class="form-control"/><br>
       </div>
       <div class="col-sm-12">
-        <label for="Description">Description de l'animal</label>
-        <textarea [(ngModel)]="animal.description" id="description" placeholder="description" class="form-control"></textarea><br>
+        <label for="a-Description">Description de l'animal</label>
+        <textarea [(ngModel)]="animal.description" id="a-description" placeholder="description" class="form-control"></textarea><br>
         <button (click)="add(animal)" class="btn btn-success pull-right">Ajouter</button>
       </div>
     </div>
@@ -92,12 +92,14 @@
   </h2>
   <table class="table table-striped text-center">
     <thead>
-      <th class="text-center">Nom</th>
-      <th class="text-center">Race</th>
-      <th class="text-center">Size</th>
-      <th class="text-center">Weight</th>
-      <th class="text-center">Gender</th>
-      <th class="text-center">Action</th>
+      <tr>
+        <th class="text-center">Nom</th>
+        <th class="text-center">Race</th>
+        <th class="text-center">Size</th>
+        <th class="text-center">Weight</th>
+        <th class="text-center">Gender</th>
+        <th class="text-center">Action</th>
+      </tr>
     </thead>
     <tbody>
     <tr *ngFor="let animal of animals" [class.selected]="animal === selectedAnimal">

@@ -12,8 +12,8 @@ export class AnimalDetailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private animalService: AnimalService) {}
 
-  animalId:2;
-  animalDetail: Animal;
+  animalId: number;
+  animalDetail: Animal  = new Animal();
 
   ngOnInit() {
     // subscribe to router event
