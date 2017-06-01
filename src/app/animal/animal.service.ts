@@ -29,6 +29,8 @@ export class AnimalService {
             'picture': animal.picture,
             'gender': animal.gender,
             'nutriment': animal.nutriment,
+            'lat': animal.lat,
+            'lng': animal.lng,
         };
         sessionStorage.setItem(newAnimal.id.toString(), JSON.stringify(newAnimal));
         this.storedAnimals.push(newAnimal);
@@ -45,6 +47,8 @@ export class AnimalService {
         animalToUpdate.picture = animal.picture;
         animalToUpdate.gender = animal.gender;
         animalToUpdate.nutriment = animal.nutriment;
+        animalToUpdate.lat = animal.lat;
+        animalToUpdate.lng = animal.lng;
         sessionStorage.setItem(animal.id.toString(), JSON.stringify(animalToUpdate));
     }
 
@@ -87,6 +91,8 @@ export class AnimalService {
                     'picture': ANIMALS[i].picture,
                     'gender': ANIMALS[i].gender,
                     'nutriment': ANIMALS[i].nutriment,
+                    'lat': ANIMALS[i].lat,
+                    'lng': ANIMALS[i].lng,
                 }));
             }
         }

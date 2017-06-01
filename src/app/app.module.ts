@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { Routes, RouterModule } from '@angular/router';
 import { EmptyComponent } from './empty/empty.component';
 
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,9 @@ import { EmptyComponent } from './empty/empty.component';
     HttpModule,
     NutrimentModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBKDwP32CoVsiMMZkSLEQOAJUX-T1MdM08'
+    }),
     RouterModule.forRoot([
       {
         path: '',

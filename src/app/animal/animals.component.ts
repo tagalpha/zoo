@@ -16,8 +16,28 @@ export class AnimalsComponent implements OnInit {
 
   constructor(private animalService: AnimalService) {}
 
+  // google maps zoom level
+  zoom: number;
+  lat: number;
+  lng: number;
+  markers = [];
+
+  getMarker(): any {
+    console.log(this.animals);
+    this.animals.forEach((animal) => {
+      this.markers.push({
+        lat: animal.lat,
+        lng: animal.lng,
+        label: animal.name,
+        draggable: true
+      })
+    })
+  }
+
   getAll(): void {
-    this.animalService.getAnimals().then(animals => this.animals = animals);
+    this.animalService
+    .getAnimals()
+    .then(animals => {this.animals = animals; this.getMarker();});
   }
 
   getOne(animal: Animal): void {
@@ -56,5 +76,10 @@ export class AnimalsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    // google maps zoom level
+    this.zoom = 8;
+
+    this.lat = 48.866667;
+    this.lng = 2.333333;
   }
 }
