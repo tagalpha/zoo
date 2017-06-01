@@ -1,8 +1,15 @@
 <h2>Liste des aliments </h2>
 
+<select [(ngModel)]="animalSelected">
+    <option *ngFor="let animal of animals" [ngValue]="animal">{{animal.name}}</option>
+</select>
 <div class="col-sm-3 panel panel-default " *ngFor="let nutriment of nutriments">
-  <div class="panel-body text-center">{{nutriment.name}}</div>
+  <div class="panel-body text-center">
+      {{nutriment.name}}
+      <i class="fa fa-{{nutriment.icon}} fa-1"></i>
+  </div>
   <div class="panel-footer">Nulla volutpat lacinia rutrum. Quisque vitae leo dolor.
      Cras ut ullamcorper felis, sit amet ornare nunc. Integer efficitur mattis sodales.
+      <button (click)="addToAnimal(nutriment)">Aliment préfèré</button>
   </div>
 </div>
