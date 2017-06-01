@@ -22,12 +22,12 @@ export class AnimalsComponent implements OnInit {
 
   getOne(animal: Animal): void {
     this.animalService.getAnimal(animal.id).then(animal => this.animalEdited = animal);
+    this.addBlock = false;
   }
 
   add(animal: Animal) : void {
     console.log(animal);
     this.animalService.addAnimals(animal);
-    //this.name = '';
   }
 
   update(animal: Animal) : void {
@@ -41,6 +41,7 @@ export class AnimalsComponent implements OnInit {
 
   showAddBlock(): void {
     this.addBlock = true;
+    delete this.animalEdited;
   }
   hideAddBlock(): void {
     this.addBlock = false;
