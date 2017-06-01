@@ -1,0 +1,82 @@
+<h2 class="text-center">
+  Fiche descriptive du :
+  <strong>{{animalDetail.name}}</strong>
+</h2>
+<br>
+<div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-4">
+      <img src={{animalDetail.picture}} alt="{{animalDetail.name}}" class="img-thumbnail">
+    </div>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-2 panel panel-default " >
+          <div class="panel-body text-center">
+            <i class="fa fa-paw fa-2x" aria-hidden="true"></i><br>
+            <strong>Race</strong>
+          </div>
+          <div class="panel-footer">
+            {{animalDetail.race}}
+          </div>
+        </div>
+        <div class="col-sm-offset-1 col-sm-2 panel panel-default " >
+          <div class="panel-body text-center">
+            <i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i><br>
+            <strong>Taille</strong>
+          </div>
+          <div class="panel-footer">
+            {{animalDetail.size}}
+          </div>
+        </div>
+        <div class="col-sm-offset-1 col-sm-2 panel panel-default " >
+          <div class="panel-body text-center">
+            <i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i><br>
+            <strong>Poids</strong>
+          </div>
+          <div class="panel-footer">
+            {{animalDetail.weight}}
+          </div>
+        </div>
+        <div class="col-sm-offset-1 col-sm-2 panel panel-default " >
+          <div class="panel-body text-center">
+            <i class="fa fa-venus-mars fa-2x" aria-hidden="true"></i><br>
+            <strong>Sexe</strong>
+          </div>
+          <div class="panel-footer">
+            {{animalDetail.gender}}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-3 panel panel-default " >
+          <div class="panel-body text-center">
+            <i class="fa fa-globe fa-2x" aria-hidden="true"></i><br>
+            <strong>Origine</strong>
+          </div>
+          <div class="panel-footer">
+            {{animalDetail.origin}}
+          </div>
+        </div>
+        <div class="col-sm-offset-1 col-sm-3 panel panel-default " >
+          <div class="panel-body text-center">
+            <i class="fa fa-heart fa-2x" aria-hidden="true"></i><br>
+            <strong>Aliments Préférés</strong>
+          </div>
+          <div class="panel-footer">
+            {{animalDetail.nutriment}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="panel panel-default " >
+    <div class="panel-body text-center">
+      <i class="fa fa-edit fa-2x" aria-hidden="true"></i><br>
+      <strong>Description</strong>
+    </div>
+    <div class="panel-footer">
+      {{animalDetail.description}}
+    </div>
+  </div>
+</div>

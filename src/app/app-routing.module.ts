@@ -3,9 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { EmptyComponent } from './empty/empty.component';
 
-const routes: Routes = [
-  { path: '', component: EmptyComponent}
-]
+const routes: Routes = []
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

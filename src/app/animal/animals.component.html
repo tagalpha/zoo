@@ -1,87 +1,103 @@
 <div *ngIf="addBlock === true" class="col-sm-12 no-padding-left">
   <button (click)="hideAddBlock()" class="pull-right">Cacher le block d'ajout</button>
-  <h2><i class="fa fa-plus"></i> Ajout d'un animal</h2>
-  <div class="col-sm-12" id="form-add-animal">
-    <div class="form-group">
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.name" placeholder="name" class="form-control"/>
+  <h2 class="text-center">Ajout d'un animal</h2>
+  <div class="form-group" id="form-add-animal">
+      <div class="col-sm-3">
+        <label for="name">Nom de l'animal</label>
+        <input [(ngModel)]="animal.name" id="name" placeholder="name" class="form-control"/>
+      </div>
+      <div class="col-sm-3">
+        <label for="race">Race de l'animal</label>
+        <input [(ngModel)]="animal.race" id="race" placeholder="race" class="form-control"/><br>
+      </div>
+      <div class="col-sm-3">
+        <label for="size">Taille de l'animal</label>
+        <input [(ngModel)]="animal.size" id="size" placeholder="size" class="form-control"/><br>
+      </div>
+      <div class="col-sm-3">
+        <label for="weight">Poids de l'animal</label>
+        <input [(ngModel)]="animal.weight" id="weight" placeholder="weight" class="form-control"/><br>
+      </div>
+      <div class="col-sm-3">
+        <label for="origin">Origine de l'animal</label>
+        <input [(ngModel)]="animal.origin" id="origin" placeholder="origin" class="form-control"/><br>
+      </div>
+      <div class="col-sm-3">
+        <label for="picture">Image de l'animal</label>
+        <input [(ngModel)]="animal.picture" id="picture" placeholder="picture" class="form-control"/><br>
+      </div>
+      <div class="col-sm-3">
+        <label for="gender">Sexe de l'animal</label>
+        <input [(ngModel)]="animal.gender" id="gender" placeholder="gender" class="form-control"/><br>
+      </div>
+      <div class="col-sm-3">
+        <label for="nutriment">Aliments préférés de l'animal</label>
+        <input [(ngModel)]="animal.nutriment" id="nutriment" placeholder="nutriment" class="form-control"/><br>
       </div>
       <div class="col-sm-12">
-        <input [(ngModel)]="animal.race" placeholder="race" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.size" placeholder="size" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.weight" placeholder="weight" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.origin" placeholder="origin" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.description" placeholder="description" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.picture" placeholder="picture" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.gender" placeholder="gender" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <input [(ngModel)]="animal.nutriment" placeholder="nutriment" class="form-control"/>
-      </div>
-      <div class="col-sm-12">
-        <button (click)="add(animal)" class="btn btn-block btn-success">Ajouter</button>
+        <label for="Description">Description de l'animal</label>
+        <textarea [(ngModel)]="animal.description" id="description" placeholder="description" class="form-control"></textarea><br>
+        <button (click)="add(animal)" class="btn btn-success pull-right">Ajouter</button>
       </div>
     </div>
-  </div>
 </div>
 
-<div *ngIf="animalEdited" class="col-sm-12 no-padding-right">
-  <h2><i class="fa fa-edit"></i> Modification de l'animal {{animalEdited.name|uppercase}}</h2>
-  <div>
-    <input [(ngModel)]="animalEdited.name" placeholder="name" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.race" placeholder="race" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.size" placeholder="size" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.weight" placeholder="weight" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.origin" placeholder="origin" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.description" placeholder="description" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.picture" placeholder="picture" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.gender" placeholder="gender" class="form-control"/><br>
-  </div>
-  <div>
-    <input [(ngModel)]="animalEdited.nutriment" placeholder="nutriment" class="form-control"/><br>
-  </div>
+<div *ngIf="animalEdited" class="col-sm-12 no-padding-left">
+  <h2 class="text-center"> Modification de l'animal {{animalEdited.name|uppercase}}</h2>
+  <div class="col-sm-3">
+      <label for="name">Nom de l'animal</label>
+      <input [(ngModel)]="animalEdited.name" id="name" placeholder="name" class="form-control"/>
+    </div>
+    <div class="col-sm-3">
+      <label for="race">Race de l'animal</label>
+      <input [(ngModel)]="animalEdited.race" id="race" placeholder="race" class="form-control"/><br>
+    </div>
+    <div class="col-sm-3">
+      <label for="size">Tailler de l'animal</label>
+      <input [(ngModel)]="animalEdited.size" id="size" placeholder="size" class="form-control"/><br>
+    </div>
+    <div class="col-sm-3">
+      <label for="weight">Poids de l'animal</label>
+      <input [(ngModel)]="animalEdited.weight" id="weight" placeholder="weight" class="form-control"/><br>
+    </div>
+    <div class="col-sm-3">
+      <label for="origin">Origine de l'animal</label>
+      <input [(ngModel)]="animalEdited.origin" id="origin" placeholder="origin" class="form-control"/><br>
+    </div>
+    <div class="col-sm-3">
+      <label for="picture">Image de l'animal</label>
+      <input [(ngModel)]="animalEdited.picture" id="picture" placeholder="picture" class="form-control"/><br>
+    </div>
+    <div class="col-sm-3">
+      <label for="gender">Sexe de l'animal</label>
+      <input [(ngModel)]="animalEdited.gender" id="gender" placeholder="gender" class="form-control"/><br>
+    </div>
+    <div class="col-sm-3">
+      <label for="nutriment">Aliments préférés de l'animal</label>
+      <input [(ngModel)]="animalEdited.nutriment" id="nutriment" placeholder="nutriment" class="form-control"/><br>
+    </div>
+    <div class="col-sm-12">
+      <label for="description">Description de l'animal</label>
+      <textarea [(ngModel)]="animalEdited.description" id="description" placeholder="description" class="form-control"></textarea><br>
+      <button (click)="update(animalEdited)" class="btn btn-success pull-right">Modifier</button>
+      <button (click)="cancelEdit()" class="btn btn-danger  pull-right">Annuler</button>
+    </div>
 
-  <button (click)="cancelEdit()" class="btn btn-default">Annuler</button>
-  <button (click)="update(animalEdited)" class="btn btn-primary">Modifier</button>
 </div>
 
 <div *ngIf="animals && (addBlock === false && !animalEdited)" class="col-sm-12 no-padding-left">
-  <button (click)="showAddBlock()" class="pull-right">Afficher le block d'ajout</button>
-  <h2 class="text-center">Liste des animaux</h2>
-  <table class="table table-striped">
+  <h2 class="text-center">
+    Liste des animaux
+    <button (click)="showAddBlock()" class="btn btn-success pull-right">Ajouter un animal</button>
+  </h2>
+  <table class="table table-striped text-center">
     <thead>
-      <th>Nom</th>
-      <th>Race</th>
-      <th>Size</th>
-      <th>Weight</th>
-      <th>Gender</th>
-      <th >Action</th>
+      <th class="text-center">Nom</th>
+      <th class="text-center">Race</th>
+      <th class="text-center">Size</th>
+      <th class="text-center">Weight</th>
+      <th class="text-center">Gender</th>
+      <th class="text-center">Action</th>
     </thead>
     <tbody>
     <tr *ngFor="let animal of animals" [class.selected]="animal === selectedAnimal">
@@ -91,7 +107,7 @@
       <td>{{animal.weight}}</td>
       <td>{{animal.gender}}</td>
       <td>
-        <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></button>
+        <a [routerLink]="['/animal',animal.id]" class="btn btn-primary btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
         <button type="button" (click)="getOne(animal)"  class="btn btn-default btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         <button type="button" (click)="delete(animal)" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
       </td>
