@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AnimalsComponent } from './animal/animals.component';
+import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { AnimalService } from './animal/animal.service';
 
 import { NutrimentModule } from './nutriment/nutriment.module';
@@ -17,7 +18,8 @@ import { EmptyComponent } from './empty/empty.component';
   declarations: [
     AppComponent,
     EmptyComponent,
-    AnimalsComponent
+    AnimalsComponent,
+    AnimalDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,10 @@ import { EmptyComponent } from './empty/empty.component';
       {
         path: 'animals',
         component: AnimalsComponent
+      },
+      {
+        path: 'animal/:id',
+        component: AnimalDetailComponent
       }
     ])
   ],
