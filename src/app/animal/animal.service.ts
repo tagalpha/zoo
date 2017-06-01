@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Animal } from './animal';
 import { ANIMALS } from './mock-animals';
+import { Nutriment } from './../nutriment/nutriment';
 
 @Injectable()
 export class AnimalService {
@@ -61,6 +62,15 @@ export class AnimalService {
         for (var i = 0; i < keys.length; i++) {
             this.storedAnimals.push(JSON.parse(sessionStorage.getItem(keys[i])));
         }
+    }
+
+    addNutriment(animal: Animal,  nutriment: Nutriment): void {
+        var animalToUpdate = JSON.parse(sessionStorage.getItem(animal.id.toString()));
+        var oldNutriment = animalToUpdate.nutriment;
+        if (oldNutriment.indexOf(nutriment.name) === -1) {
+            animalToUpdate.nutriment = nutriment.name + ', ' + oldNutriment;
+        }
+        sessionStorage.setItem(animal.id.toString(), JSON.stringify(animalToUpdate));
     }
 
     hydrateBdd(): void {

@@ -1,4 +1,3 @@
-
 <div *ngIf="addBlock === true" class="col-sm-12 no-padding-left">
   <button (click)="hideAddBlock()" class="pull-right">Cacher le block d'ajout</button>
   <h2><i class="fa fa-plus"></i> Ajout d'un animal</h2>
@@ -72,8 +71,8 @@
   <button (click)="update(animalEdited)" class="btn btn-primary">Modifier</button>
 </div>
 
-<div *ngIf="animals" class="col-sm-12 no-padding-left">
-  <button *ngIf="addBlock === false" (click)="showAddBlock()" class="pull-right">Afficher le block d'ajout</button>
+<div *ngIf="animals && (addBlock === false && !animalEdited)" class="col-sm-12 no-padding-left">
+  <button (click)="showAddBlock()" class="pull-right">Afficher le block d'ajout</button>
   <h2 class="text-center">Liste des animaux</h2>
   <table class="table table-striped">
     <thead>
