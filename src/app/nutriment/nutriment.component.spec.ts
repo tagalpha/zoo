@@ -5,6 +5,7 @@ import { NutrimentComponent } from './nutriment.component';
 describe('NutrimentComponent', () => {
   let component: NutrimentComponent;
   let fixture: ComponentFixture<NutrimentComponent>;
+  it('true is true', () => expect(true).toBe(true));
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
