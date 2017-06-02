@@ -42,38 +42,41 @@
 
 <div *ngIf="veterinaries && (addBlock === false && !veterinaryEdited)" class="col-sm-12 no-padding-left">
   <h2 class="text-center">List of veterinary</h2>
-  <table class="table table-striped text-center">
-    <thead>
-      <tr>
-        <th class="text-center"><button (click)="showAddBlock()" class="btn btn-success pull-left btn-xs"><i class="fa fa-plus-circle"></i></button> Name</th>
-        <th class="text-center">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let veterinary of veterinaries" [class.selected]="veterinary === selectedVeterinary">
-        <td>{{veterinary.name}}</td>
-        <td>
-          <button type="button" (click)="getOne(veterinary)"  class="btn btn-default btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-          <button type="button" (click)="delete(veterinary)" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="col-sm-6">
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th class="text-center"><button (click)="showAddBlock()" class="btn btn-success pull-left btn-xs"><i class="fa fa-plus-circle"></i></button> Name</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let veterinary of veterinaries" [class.selected]="veterinary === selectedVeterinary">
+          <td>{{veterinary.name}}</td>
+          <td>
+            <button type="button" (click)="getOne(veterinary)"  class="btn btn-default btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button type="button" (click)="delete(veterinary)" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-6">
+    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+      <sebm-google-map-marker
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label"
+      [markerDraggable]="m.draggable"
+      (dragEnd)="markerDragEnd(m, $event)">
 
-  <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-    <sebm-google-map-marker
-    *ngFor="let m of markers; let i = index"
-    (markerClick)="clickedMarker(m.label, i)"
-    [latitude]="m.lat"
-    [longitude]="m.lng"
-    [label]="m.label"
-    [markerDraggable]="m.draggable"
-    (dragEnd)="markerDragEnd(m, $event)">
+      <sebm-google-map-info-window>
+        <strong>InfoWindow content</strong>
+      </sebm-google-map-info-window>
 
-    <sebm-google-map-info-window>
-      <strong>InfoWindow content</strong>
-    </sebm-google-map-info-window>
-
-  </sebm-google-map-marker>
+    </sebm-google-map-marker>
   </sebm-google-map>
+</div>
 </div>
