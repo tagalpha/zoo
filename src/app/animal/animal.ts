@@ -1,3 +1,8 @@
+/*
+ * Class Animal
+ *
+ * Définition des éléments d'un objet Animal
+*/
 export class Animal {
     id: number;
     name: string;

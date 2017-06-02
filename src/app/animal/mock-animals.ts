@@ -1,5 +1,8 @@
 import { Animal } from './animal';
 
+/*
+ * Datafixtures d'animaux
+*/
 export const ANIMALS: Animal[] = [
     { id: 1, name: 'Cat', race: 'Birman', size: 'Small', weight: '4kg', origin: 'Burma', description: 'The sacred of Burma or Burmese, is a breed of cats native to Burma. This medium-sized cat is characterized by its medium-length coat, which has the same colourpoint pattern as the Siamese but its feet are pure white as if it had gloves.', picture: 'http://www.chat-birman.fr/elevage-sacre-birmanie/images/stories/May-Eya/img_7297%201280x692.jpg', gender: 'Male', nutriment: '', lat: 16.8052800, lng :96.1561100},
     { id: 2, name: 'Dog', race: 'Golden Retriever', size: 'Small', weight: '30kg', origin: 'Great-Britain', description: 'The golden retriever or simply golden is a breed of dog of British origin. Selected as a report dog, the golden retriever is a very popular breed since the 1990s. It is a medium-sized dog with a long-haired, cream to dark golden color.', picture: 'http://blog.dogfidelity.com/wp-content/uploads/2015/12/golden-retriever.jpg', gender: 'Female', nutriment: '' , lat: 51.5085300, lng : -0.1257400},

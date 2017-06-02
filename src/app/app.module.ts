@@ -15,14 +15,12 @@ import { NutrimentModule } from './nutriment/nutriment.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { Routes, RouterModule } from '@angular/router';
-import { EmptyComponent } from './empty/empty.component';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmptyComponent,
     AnimalsComponent,
     AnimalDetailComponent,
     VeterinariesComponent
