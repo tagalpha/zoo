@@ -8,7 +8,7 @@ import { VeterinaryService } from './veterinary/veterinary.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'Gestionnaire d\'animaux';
+  title = 'Animal Manager';
 
   constructor(private animalService: AnimalService, private veterinaryService: VeterinaryService) {}
 

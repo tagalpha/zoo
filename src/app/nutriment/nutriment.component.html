@@ -1,18 +1,17 @@
-<h2>Ajouter des aliments </h2>
-
-<label>Sélectionnez l'animal :</label>
-<select class="form-control" [(ngModel)]="animalSelected">
+<div class="col-sm-12">
+  <h2 class="text-center">Add food</h2>
+  <label>Select animal :</label>
+  <select class="form-control" [(ngModel)]="animalSelected">
     <option *ngFor="let animal of animals" [ngValue]="animal">{{animal.name}}</option>
-</select><br>
+  </select><br>
 
-<label>Choississez les aliments que préfère votre animaux :</label><br>
-<div class="col-sm-3 panel panel-default " *ngFor="let nutriment of nutriments">
-  <div class="panel-body text-center">
-    <i class="fa fa-{{nutriment.icon}} fa-2x"></i><br>
-    <strong>{{nutriment.name}} </strong>
-  </div>
-  <div class="panel-footer">Nulla volutpat lacinia rutrum. Quisque vitae leo dolor.
-     Cras ut ullamcorper felis, sit amet ornare nunc. Integer efficitur mattis sodales.
-     <button class="btn btn-success btn-xs" (click)="addToAnimal(nutriment)"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+  <label>Choose favorites foods that he likes :</label><br>
+  <div class="col-sm-3 panel panel-default" *ngFor="let nutriment of nutriments">
+    <div class="panel-body text-center">
+      <button *ngIf="animalSelected" class="btn btn-success btn-xs pull-right" (click)="addToAnimal(nutriment)"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+      <div class="clearfix"></div>
+      <i class="fa fa-{{nutriment.icon}} fa-2x"></i><br>
+      <strong>{{nutriment.name}}</strong>
+    </div>
   </div>
 </div>

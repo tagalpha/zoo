@@ -1,6 +1,5 @@
 <h2 class="text-center">
-  Fiche descriptive du :
-  <strong>{{animalDetail.name}}</strong>
+  Description of : <strong>{{animalDetail.name}}</strong>
 </h2>
 <br>
 <div class="col-sm-12">
@@ -10,37 +9,37 @@
     </div>
     <div class="col-sm-8">
       <div class="row">
-        <div class="col-sm-2 panel panel-default " >
+        <div class="col-sm-2 panel panel-default" >
           <div class="panel-body text-center">
             <i class="fa fa-paw fa-2x" aria-hidden="true"></i><br>
-            <strong>Race</strong>
+            <strong>Breed</strong>
           </div>
           <div class="panel-footer">
             {{animalDetail.race}}
           </div>
         </div>
-        <div class="col-sm-offset-1 col-sm-2 panel panel-default " >
+        <div class="col-sm-offset-1 col-sm-2 panel panel-default" >
           <div class="panel-body text-center">
             <i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i><br>
-            <strong>Taille</strong>
+            <strong>Size</strong>
           </div>
           <div class="panel-footer">
             {{animalDetail.size}}
           </div>
         </div>
-        <div class="col-sm-offset-1 col-sm-2 panel panel-default " >
+        <div class="col-sm-offset-1 col-sm-2 panel panel-default" >
           <div class="panel-body text-center">
             <i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i><br>
-            <strong>Poids</strong>
+            <strong>Weight</strong>
           </div>
           <div class="panel-footer">
             {{animalDetail.weight}}
           </div>
         </div>
-        <div class="col-sm-offset-1 col-sm-2 panel panel-default " >
+        <div class="col-sm-offset-1 col-sm-2 panel panel-default" >
           <div class="panel-body text-center">
             <i class="fa fa-venus-mars fa-2x" aria-hidden="true"></i><br>
-            <strong>Sexe</strong>
+            <strong>Gender</strong>
           </div>
           <div class="panel-footer">
             {{animalDetail.gender}}
@@ -48,19 +47,19 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-offset-2 col-sm-3 panel panel-default " >
+        <div class="col-sm-offset-2 col-sm-3 panel panel-default" >
           <div class="panel-body text-center">
             <i class="fa fa-globe fa-2x" aria-hidden="true"></i><br>
-            <strong>Origine</strong>
+            <strong>Origin</strong>
           </div>
           <div class="panel-footer">
             {{animalDetail.origin}}
           </div>
         </div>
-        <div class="col-sm-offset-1 col-sm-3 panel panel-default " >
+        <div class="col-sm-offset-1 col-sm-3 panel panel-default" >
           <div class="panel-body text-center">
             <i class="fa fa-heart fa-2x" aria-hidden="true"></i><br>
-            <strong>Aliments Préférés</strong>
+            <strong>Favorites Foods</strong>
           </div>
           <div class="panel-footer">
             {{animalDetail.nutriment}}
@@ -69,7 +68,7 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-default " >
+  <div class="panel panel-default" >
     <div class="panel-body text-center">
       <i class="fa fa-edit fa-2x" aria-hidden="true"></i><br>
       <strong>Description</strong>
@@ -81,18 +80,18 @@
 
   <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
     <sebm-google-map-marker
-            *ngFor="let m of markers; let i = index"
-            (markerClick)="clickedMarker(m.label, i)"
-            [latitude]="m.lat"
-            [longitude]="m.lng"
-            [label]="m.label"
-            [markerDraggable]="m.draggable"
-            (dragEnd)="markerDragEnd(m, $event)">
+    *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label"
+    [markerDraggable]="m.draggable"
+    (dragEnd)="markerDragEnd(m, $event)">
 
-      <sebm-google-map-info-window>
-        <strong>InfoWindow content</strong>
-      </sebm-google-map-info-window>
+    <sebm-google-map-info-window>
+      <strong>InfoWindow content</strong>
+    </sebm-google-map-info-window>
 
-    </sebm-google-map-marker>
-  </sebm-google-map>
+  </sebm-google-map-marker>
+</sebm-google-map>
 </div>

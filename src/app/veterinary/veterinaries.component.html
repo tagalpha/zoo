@@ -1,83 +1,79 @@
 <div *ngIf="addBlock === true" class="col-sm-12 no-padding-left">
-  <button (click)="hideAddBlock()" class="pull-right">Cacher le block d'ajout</button>
-  <h2 class="text-center">Ajout d'un veterinaire</h2>
+  <h2 class="text-center">Add veterinary</h2>
   <div class="form-group" id="form-add-veterinary">
-      <div class="col-sm-4">
-        <label for="a-name">Nom du veterinaire</label>
-        <input [(ngModel)]="veterinary.name" id="a-name" placeholder="name" class="form-control"/>
-      </div>
-      <div class="col-sm-4">
-        <label for="a-lat">Latitude du veterinaire</label>
-        <input [(ngModel)]="veterinary.lat" type="number" id="a-lat" placeholder="latitude" class="form-control"/><br>
-      </div>
-      <div class="col-sm-4">
-        <label for="a-lng">Longitude du veterinaire</label>
-        <input [(ngModel)]="veterinary.lng" type="number" id="a-lng" placeholder="longitude" class="form-control"/><br>
-      </div>
-      <div class="col-sm-12">
-        <button (click)="add(veterinary)" class="btn btn-success pull-right">Ajouter</button>
-      </div>
+    <div class="col-sm-4">
+      <label for="a-name">Name</label>
+      <input [(ngModel)]="veterinary.name" id="a-name" placeholder="name" class="form-control"/>
     </div>
+    <div class="col-sm-4">
+      <label for="a-lat">Latitude</label>
+      <input [(ngModel)]="veterinary.lat" type="number" id="a-lat" placeholder="latitude" class="form-control"/><br>
+    </div>
+    <div class="col-sm-4">
+      <label for="a-lng">Longitude</label>
+      <input [(ngModel)]="veterinary.lng" type="number" id="a-lng" placeholder="longitude" class="form-control"/><br>
+    </div>
+    <div class="pull-right">
+      <button (click)="add(veterinary)" class="btn btn-success">Add</button>
+      <button (click)="hideAddBlock()" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="veterinaryEdited" class="col-sm-12 no-padding-left">
-  <h2 class="text-center"> Modification du veterinaire {{veterinaryEdited.name|uppercase}}</h2>
+  <h2 class="text-center"> Add veterinary : <strong>{{veterinaryEdited.name|uppercase}}</strong></h2>
   <div class="col-sm-4">
-      <label for="name">Nom du veterinaire</label>
-      <input [(ngModel)]="veterinaryEdited.name" id="name" placeholder="name" class="form-control"/>
-    </div>
-    <div class="col-sm-4">
-        <label for="lat">Latitude du veterinaire</label>
-        <input [(ngModel)]="veterinaryEdited.lat" type="number" id="lat" placeholder="latitude" class="form-control"/><br>
-    </div>
-    <div class="col-sm-4">
-        <label for="lng">Longitude du veterinaire</label>
-        <input [(ngModel)]="veterinaryEdited.lng" type="number" id="lng" placeholder="longitude" class="form-control"/><br>
-    </div>
-    <div class="col-sm-12">
-      <button (click)="update(veterinaryEdited)" class="btn btn-success pull-right">Modifier</button>
-      <button (click)="cancelEdit()" class="btn btn-danger  pull-right">Annuler</button>
-    </div>
-
+    <label for="name">Name</label>
+    <input [(ngModel)]="veterinaryEdited.name" id="name" placeholder="name" class="form-control"/>
+  </div>
+  <div class="col-sm-4">
+    <label for="lat">Latitude</label>
+    <input [(ngModel)]="veterinaryEdited.lat" type="number" id="lat" placeholder="latitude" class="form-control"/><br>
+  </div>
+  <div class="col-sm-4">
+    <label for="lng">Longitude</label>
+    <input [(ngModel)]="veterinaryEdited.lng" type="number" id="lng" placeholder="longitude" class="form-control"/><br>
+  </div>
+  <div class="col-sm-12">
+    <button (click)="update(veterinaryEdited)" class="btn btn-success pull-right">Edit</button>
+    <button (click)="cancelEdit()" class="btn btn-danger  pull-right">Cancel</button>
+  </div>
 </div>
 
 <div *ngIf="veterinaries && (addBlock === false && !veterinaryEdited)" class="col-sm-12 no-padding-left">
-  <h2 class="text-center">
-    Liste des veterinaires
-    <button (click)="showAddBlock()" class="btn btn-success pull-right">Ajouter un veterinaire</button>
-  </h2>
+  <h2 class="text-center">List of veterinary</h2>
   <table class="table table-striped text-center">
     <thead>
       <tr>
-        <th class="text-center">Nom</th>
+        <th class="text-center"><button (click)="showAddBlock()" class="btn btn-success pull-left btn-xs"><i class="fa fa-plus-circle"></i></button> Name</th>
         <th class="text-center">Action</th>
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let veterinary of veterinaries" [class.selected]="veterinary === selectedVeterinary">
-      <td>{{veterinary.name}}</td>
-      <td>
-        <button type="button" (click)="getOne(veterinary)"  class="btn btn-default btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-        <button type="button" (click)="delete(veterinary)" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
-      </td>
-    </tr>
+      <tr *ngFor="let veterinary of veterinaries" [class.selected]="veterinary === selectedVeterinary">
+        <td>{{veterinary.name}}</td>
+        <td>
+          <button type="button" (click)="getOne(veterinary)"  class="btn btn-default btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+          <button type="button" (click)="delete(veterinary)" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </td>
+      </tr>
     </tbody>
   </table>
-  </div>
 
   <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
     <sebm-google-map-marker
-        *ngFor="let m of markers; let i = index"
-        (markerClick)="clickedMarker(m.label, i)"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]="m.label"
-        [markerDraggable]="m.draggable"
-        (dragEnd)="markerDragEnd(m, $event)">
+    *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label"
+    [markerDraggable]="m.draggable"
+    (dragEnd)="markerDragEnd(m, $event)">
 
-      <sebm-google-map-info-window>
-        <strong>InfoWindow content</strong>
-      </sebm-google-map-info-window>
-      
-    </sebm-google-map-marker>
+    <sebm-google-map-info-window>
+      <strong>InfoWindow content</strong>
+    </sebm-google-map-info-window>
+
+  </sebm-google-map-marker>
   </sebm-google-map>
+</div>
