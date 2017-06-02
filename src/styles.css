@@ -22,3 +22,8 @@
 .no-padding-right {
     padding-right: 0;
 }
+
+.sebm-google-map-container {
+    height: 500px;
+    width: 100%;
+}

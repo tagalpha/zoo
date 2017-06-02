@@ -17,9 +17,8 @@ export class AnimalService {
     }
 
     addAnimals(animal: Animal) : void {
-        var id = Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
         var newAnimal = {
-            'id': id,
+            'id': animal.id,
             'name': animal.name,
             'race': animal.race,
             'size': animal.size,
@@ -32,12 +31,12 @@ export class AnimalService {
             'lat': animal.lat,
             'lng': animal.lng,
         };
-        sessionStorage.setItem(newAnimal.id.toString(), JSON.stringify(newAnimal));
+        sessionStorage.setItem('animal_' + newAnimal.id.toString(), JSON.stringify(newAnimal));
         this.storedAnimals.push(newAnimal);
     }
 
     updateAnimals(animal: Animal) : void {
-        var animalToUpdate = JSON.parse(sessionStorage.getItem(animal.id.toString()));
+        var animalToUpdate = JSON.parse(sessionStorage.getItem('animal_' + animal.id.toString()));
         animalToUpdate.name = animal.name;
         animalToUpdate.race = animal.race;
         animalToUpdate.size = animal.size;
@@ -49,11 +48,26 @@ export class AnimalService {
         animalToUpdate.nutriment = animal.nutriment;
         animalToUpdate.lat = animal.lat;
         animalToUpdate.lng = animal.lng;
-        sessionStorage.setItem(animal.id.toString(), JSON.stringify(animalToUpdate));
+        sessionStorage.setItem('animal_' + animal.id.toString(), JSON.stringify(animalToUpdate));
+
+        var storedAnimalToEdit = this.storedAnimals.filter((animalToEdit) => {
+            return animalToEdit.id == animal.id;
+        });
+        storedAnimalToEdit[0].name = animal.name;
+        storedAnimalToEdit[0].race = animal.race;
+        storedAnimalToEdit[0].size = animal.size;
+        storedAnimalToEdit[0].weight = animal.weight;
+        storedAnimalToEdit[0].origin = animal.origin;
+        storedAnimalToEdit[0].description = animal.description;
+        storedAnimalToEdit[0].picture = animal.picture;
+        storedAnimalToEdit[0].gender = animal.gender;
+        storedAnimalToEdit[0].nutriment = animal.nutriment;
+        storedAnimalToEdit[0].lat = animal.lat;
+        storedAnimalToEdit[0].lng = animal.lng;
     }
 
     deleteAnimals(animal: Animal) : void {
-        sessionStorage.removeItem(animal.id.toString());
+        sessionStorage.removeItem('animal_' + animal.id.toString());
         const index = this.storedAnimals.indexOf(animal);
 
         if(-1 < index) {
@@ -63,25 +77,44 @@ export class AnimalService {
 
     setStoredAnimals(): void {
         var keys = Object.keys(sessionStorage);
-        for (var i = 0; i < keys.length; i++) {
-            this.storedAnimals.push(JSON.parse(sessionStorage.getItem(keys[i])));
+        var animalKeys = [];
+        for (var j = 0; j < keys.length; j++) {
+            if (keys[j].indexOf('animal_') != -1) {
+                animalKeys.push(keys[j]);
+            }
+        }
+        for (var i = 0; i < animalKeys.length; i++) {
+            this.storedAnimals.push(JSON.parse(sessionStorage.getItem(animalKeys[i])));
         }
     }
 
     addNutriment(animal: Animal,  nutriment: Nutriment): void {
-        var animalToUpdate = JSON.parse(sessionStorage.getItem(animal.id.toString()));
+        var animalToUpdate = JSON.parse(sessionStorage.getItem('animal_' + animal.id.toString()));
+        var storedAnimalToEdit = this.storedAnimals.filter((animalToEdit) => {
+            return animalToEdit.id == animal.id;
+        });
+
         var oldNutriment = animalToUpdate.nutriment;
         if (oldNutriment.indexOf(nutriment.name) === -1) {
             animalToUpdate.nutriment = nutriment.name + ', ' + oldNutriment;
+            storedAnimalToEdit[0].nutriment = nutriment.name + ', ' + oldNutriment;
         }
-        sessionStorage.setItem(animal.id.toString(), JSON.stringify(animalToUpdate));
+        sessionStorage.setItem('animal_' + animal.id.toString(), JSON.stringify(animalToUpdate));
+
     }
 
     hydrateBdd(): void {
-        if (Object.keys(sessionStorage).length === 0) {
+        var storageKeys = Object.keys(sessionStorage);
+        var animalKeys = [];
+        for (var j = 0; j < storageKeys.length; j++) {
+            if (storageKeys[j].indexOf('animal_') != -1) {
+                animalKeys.push(storageKeys[j]);
+            }
+        }
+        if (animalKeys.length === 0) {
             for (var i = 0; i < ANIMALS.length; i++) {
-                sessionStorage.setItem(ANIMALS[i].id.toString(), JSON.stringify({
-                    'id': ANIMALS[i].id.toString(),
+                sessionStorage.setItem('animal_' + ANIMALS[i].id.toString(), JSON.stringify({
+                    'id': ANIMALS[i].id,
                     'name': ANIMALS[i].name,
                     'race': ANIMALS[i].race,
                     'size': ANIMALS[i].size,

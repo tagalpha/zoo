@@ -8,6 +8,9 @@ import { AnimalsComponent } from './animal/animals.component';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { AnimalService } from './animal/animal.service';
 
+import { VeterinariesComponent } from './veterinary/veterinaries.component';
+import { VeterinaryService } from './veterinary/veterinary.service';
+
 import { NutrimentModule } from './nutriment/nutriment.module';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +24,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     AppComponent,
     EmptyComponent,
     AnimalsComponent,
-    AnimalDetailComponent
+    AnimalDetailComponent,
+    VeterinariesComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +49,14 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
       {
         path: 'animal/:id',
         component: AnimalDetailComponent
-      }
+      },
+      {
+        path: 'veterinaries',
+        component: VeterinariesComponent
+      },
     ])
   ],
-  providers: [AnimalService],
+  providers: [AnimalService, VeterinaryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

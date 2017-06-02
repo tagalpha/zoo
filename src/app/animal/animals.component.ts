@@ -22,10 +22,10 @@ export class AnimalsComponent implements OnInit {
   lng: number;
   markers = [];
 
-  getMarker(): any {
-    console.log(this.animals);
+  getMarker(): void {
     this.animals.forEach((animal) => {
       this.markers.push({
+        id: animal.id,
         lat: animal.lat,
         lng: animal.lng,
         label: animal.name,
@@ -46,20 +46,40 @@ export class AnimalsComponent implements OnInit {
   }
 
   add(animal: Animal) : void {
-    console.log(animal);
+    animal.id = Math.floor((1 + Math.random()) * 0x10000);
     this.animalService.addAnimals(animal);
     this.addBlock = false;
     delete this.animal;
     this.animal = new Animal;
+    this.markers.push({
+      id: animal.id,
+      lat: animal.lat,
+      lng: animal.lng,
+      label: animal.name,
+      draggable: true
+    })
   }
 
   update(animal: Animal) : void {
     this.animalService.updateAnimals(animal);
     delete this.animalEdited;
+    var markerToUpdate = this.markers.filter((marker) => {
+      return marker.id == animal.id;
+    });
+    markerToUpdate[0].lat = animal.lat;
+    markerToUpdate[0].lng = animal.lng;
+    markerToUpdate[0].label = animal.name;
   }
 
   delete(animal: Animal) : void {
     this.animalService.deleteAnimals(animal);
+    var markerToDelete = this.markers.filter((marker) => {
+      return marker.id == animal.id;
+    });
+    const index = this.markers.indexOf(markerToDelete[0]);
+    if(-1 < index) {
+      this.markers.splice(index,  1);
+    }
   }
 
   showAddBlock(): void {
@@ -77,9 +97,9 @@ export class AnimalsComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
     // google maps zoom level
-    this.zoom = 8;
+    this.zoom = 11;
 
-    this.lat = 48.866667;
-    this.lng = 2.333333;
+    this.lat = 48.8641500;
+    this.lng = 2.4832200;
   }
 }
