@@ -8,18 +8,24 @@ import { AnimalsComponent } from './animal/animals.component';
 import { AnimalDetailComponent } from './animal-detail/animal-detail.component';
 import { AnimalService } from './animal/animal.service';
 
+import { VeterinariesComponent } from './veterinary/veterinaries.component';
+import { VeterinaryService } from './veterinary/veterinary.service';
+
 import { NutrimentModule } from './nutriment/nutriment.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { Routes, RouterModule } from '@angular/router';
 import { EmptyComponent } from './empty/empty.component';
 
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
 @NgModule({
   declarations: [
     AppComponent,
     EmptyComponent,
     AnimalsComponent,
-    AnimalDetailComponent
+    AnimalDetailComponent,
+    VeterinariesComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +33,9 @@ import { EmptyComponent } from './empty/empty.component';
     HttpModule,
     NutrimentModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBKDwP32CoVsiMMZkSLEQOAJUX-T1MdM08'
+    }),
     RouterModule.forRoot([
       {
         path: '',
@@ -40,10 +49,14 @@ import { EmptyComponent } from './empty/empty.component';
       {
         path: 'animal/:id',
         component: AnimalDetailComponent
-      }
+      },
+      {
+        path: 'veterinaries',
+        component: VeterinariesComponent
+      },
     ])
   ],
-  providers: [AnimalService],
+  providers: [AnimalService, VeterinaryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

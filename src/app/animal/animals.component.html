@@ -2,35 +2,43 @@
   <button (click)="hideAddBlock()" class="pull-right">Cacher le block d'ajout</button>
   <h2 class="text-center">Ajout d'un animal</h2>
   <div class="form-group" id="form-add-animal">
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <label for="a-name">Nom de l'animal</label>
         <input [(ngModel)]="animal.name" id="a-name" placeholder="name" class="form-control"/>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <label for="a-race">Race de l'animal</label>
         <input [(ngModel)]="animal.race" id="a-race" placeholder="race" class="form-control"/><br>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <label for="a-size">Taille de l'animal</label>
         <input [(ngModel)]="animal.size" id="a-size" placeholder="size" class="form-control"/><br>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <label for="a-weight">Poids de l'animal</label>
         <input [(ngModel)]="animal.weight" id="a-weight" placeholder="weight" class="form-control"/><br>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <label for="a-origin">Origine de l'animal</label>
         <input [(ngModel)]="animal.origin" id="a-origin" placeholder="origin" class="form-control"/><br>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <label for="a-picture">Image de l'animal</label>
         <input [(ngModel)]="animal.picture" id="a-picture" placeholder="picture" class="form-control"/><br>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <label for="a-gender">Sexe de l'animal</label>
         <input [(ngModel)]="animal.gender" id="a-gender" placeholder="gender" class="form-control"/><br>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-4">
+        <label for="a-lat">Latitude de l'animal</label>
+        <input [(ngModel)]="animal.lat" type="number" id="a-lat" placeholder="latitude" class="form-control"/><br>
+      </div>
+      <div class="col-sm-4">
+        <label for="a-lng">Longitude de l'animal</label>
+        <input [(ngModel)]="animal.lng" type="number" id="a-lng" placeholder="longitude" class="form-control"/><br>
+      </div>
+      <div class="col-sm-12">
         <label for="a-nutriment">Aliments préférés de l'animal</label>
         <input [(ngModel)]="animal.nutriment" id="a-nutriment" placeholder="nutriment" class="form-control"/><br>
       </div>
@@ -44,35 +52,43 @@
 
 <div *ngIf="animalEdited" class="col-sm-12 no-padding-left">
   <h2 class="text-center"> Modification de l'animal {{animalEdited.name|uppercase}}</h2>
-  <div class="col-sm-3">
+  <div class="col-sm-4">
       <label for="name">Nom de l'animal</label>
       <input [(ngModel)]="animalEdited.name" id="name" placeholder="name" class="form-control"/>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="race">Race de l'animal</label>
       <input [(ngModel)]="animalEdited.race" id="race" placeholder="race" class="form-control"/><br>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="size">Tailler de l'animal</label>
       <input [(ngModel)]="animalEdited.size" id="size" placeholder="size" class="form-control"/><br>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="weight">Poids de l'animal</label>
       <input [(ngModel)]="animalEdited.weight" id="weight" placeholder="weight" class="form-control"/><br>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="origin">Origine de l'animal</label>
       <input [(ngModel)]="animalEdited.origin" id="origin" placeholder="origin" class="form-control"/><br>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="picture">Image de l'animal</label>
       <input [(ngModel)]="animalEdited.picture" id="picture" placeholder="picture" class="form-control"/><br>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <label for="gender">Sexe de l'animal</label>
       <input [(ngModel)]="animalEdited.gender" id="gender" placeholder="gender" class="form-control"/><br>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
+        <label for="lat">Latitude de l'animal</label>
+        <input [(ngModel)]="animalEdited.lat" type="number" id="lat" placeholder="latitude" class="form-control"/><br>
+    </div>
+    <div class="col-sm-4">
+        <label for="lng">Longitude de l'animal</label>
+        <input [(ngModel)]="animalEdited.lng" type="number" id="lng" placeholder="longitude" class="form-control"/><br>
+    </div>
+    <div class="col-sm-12">
       <label for="nutriment">Aliments préférés de l'animal</label>
       <input [(ngModel)]="animalEdited.nutriment" id="nutriment" placeholder="nutriment" class="form-control"/><br>
     </div>
@@ -116,4 +132,21 @@
     </tr>
     </tbody>
   </table>
-</div>
+  </div>
+
+  <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <sebm-google-map-marker
+        *ngFor="let m of markers; let i = index"
+        (markerClick)="clickedMarker(m.label, i)"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [label]="m.label"
+        [markerDraggable]="m.draggable"
+        (dragEnd)="markerDragEnd(m, $event)">
+
+      <sebm-google-map-info-window>
+        <strong>InfoWindow content</strong>
+      </sebm-google-map-info-window>
+      
+    </sebm-google-map-marker>
+  </sebm-google-map>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from './animal/animal.service';
+import { VeterinaryService } from './veterinary/veterinary.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import { AnimalService } from './animal/animal.service';
 export class AppComponent implements OnInit{
   title = 'Gestionnaire d\'animaux';
 
-  constructor(private animalService: AnimalService) {}
+  constructor(private animalService: AnimalService, private veterinaryService: VeterinaryService) {}
 
   ngOnInit():void {
     this.animalService.hydrateBdd();
     this.animalService.setStoredAnimals();
+    this.veterinaryService.hydrateBdd();
+    this.veterinaryService.setStoredVeterinaries();
   }
 }

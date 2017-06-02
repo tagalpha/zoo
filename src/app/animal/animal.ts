@@ -9,4 +9,6 @@ export class Animal {
     picture: string;
     gender: string;
     nutriment: string;
+    lat ?: number;
+    lng ?: number;
 }
