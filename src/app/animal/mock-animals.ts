@@ -1,5 +1,8 @@
 import { Animal } from './animal';
 
+/*
+ * Datafixtures d'animaux
+*/
 export const ANIMALS: Animal[] = [
     { id: 1, name: 'Chat', race: 'Chat', size: 'Chat', weight: 'Chat', origin: 'Chat', description: 'Chat', picture: 'Chat', gender: 'Chat', nutriment: 'Chat', lat: 48.876667, lng :2.133333},
     { id: 2, name: 'Chien', race: 'Chat', size: 'Chat', weight: 'Chat', origin: 'Chat', description: 'Chat', picture: 'Chat', gender: 'Chat', nutriment: 'Chat' , lat: 48.886667, lng :2.233333},
